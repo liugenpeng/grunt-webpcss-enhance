@@ -1,0 +1,38 @@
+{
+  "name": "grunt-webpcss-enhance",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "https://github.com/liugenpeng/grunt-webpcss-enhance",
+  "author": {
+    "name": "liugenpeng",
+    "email": "1019403544@qq.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/liugenpeng/grunt-webpcss-enhance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liugenpeng/grunt-webpcss-enhance/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/liugenpeng/grunt-webpcss-enhance/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "lodash": "^4.15.0",
+    "postcss": "^5.1.2",
+    "postcss-helpers": "^0.3.1"
+  },
+  "keywords": [
+    "grunt-webpcss-enhance"
+  ]
+}
