@@ -1,7 +1,6 @@
-
 .dev-1{
 	background: url("../../images/test.png") no-repeat;
+	background-position:0 0
 }
-.dev-1 {
-	background-position: 0 0;
-}
+
+

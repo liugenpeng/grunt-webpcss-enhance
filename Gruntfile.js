@@ -19,10 +19,22 @@ module.exports = function(grunt) {
 
       mytask: {
           options: {
-              suffix:['.png', '.jpg'],
-              rules:{
-                  from:'../images',
-                  to:'../images/webp'
+              webpClass:'.webp',
+              noWebpClass:"",
+              imgRules:{
+                  replace_from:/\.(png|jpg|jpeg)/,
+                  replace_to:".webp"
+              },
+              urlRules:{
+                  replace_from:'../images',
+                  replace_to:'../images/webp'
+              },
+              cssStyles:{
+                  semanticMerging:false,
+                  keepBreaks:true,
+                  compatibility:'ie8',
+                  rebase: false,
+                  advanced:false
               }
           },
           files: {

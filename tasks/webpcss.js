@@ -12,7 +12,7 @@ var postcss = require('postcss');
 var postcssWebp = require('../lib/postcss-webp');
 var path = require('path');
 var _ = require('lodash');
-
+var CleanCSS = require('clean-css');
 module.exports = function(grunt) {
 
   // Please see the Grunt documentation for more information regarding task
@@ -21,10 +21,20 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('webpcss', '为支持webp格式图片处理css', function(options) {
       // Merge task-specific and/or target-specific options with these defaults.
       var options = this.options({
-          suffix:['.png', '.jpg'],
-          rules:{
-              from:'../images',
-              to:'../images/webp'
+          webpClass:'.webp',
+          noWebpClass:"",
+          imgRules:{
+              replace_from:/\.(png|jpg|jpeg)/,
+              replace_to:".webp"
+          },
+          urlRules:{
+              replace_from:'../images',
+              replace_to:'../images/webp'
+          },
+          cssStyles:{
+              compatibility:true,
+              keepBreaks:true,
+              advanced:false
           }
       });
       var webpOptions = _.extend({}, options);
@@ -61,17 +71,19 @@ module.exports = function(grunt) {
                     webpOptions
                   ))
                   .process(css).then(function(result){
-                     
-                      var buf4 = new Buffer(result.root._bs_result, 'utf8');
-                    
-                      grunt.file.write(webpOptions.dest, buf4, {
-                          encoding:"utf8"
-                      });
-
-                       return done(true);
+                      var processCss = result.root._bs_result;
                       
+                      new CleanCSS(webpOptions.cssStyles).minify(processCss, function (error, minified) {
+                         
+                          var css_buff = new Buffer(minified.styles, 'utf8');
+                    
+                          grunt.file.write(webpOptions.dest, css_buff, {
+                              encoding:"utf8"
+                          });
+                          
+                          return done();
+                      });
                   });
-
           });
   
       });

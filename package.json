@@ -27,6 +27,7 @@
     "test": "grunt test"
   },
   "devDependencies": {
+    "clean-css": "^3.4.19",
     "grunt": "~0.4.5",
     "lodash": "^4.15.0",
     "postcss": "^5.1.2",
