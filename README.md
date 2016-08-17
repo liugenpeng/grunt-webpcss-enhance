@@ -21,10 +21,20 @@ This plugin requires Grunt `~0.4.5`
 
           mytask: {
               options: {
-                  suffix:['.png', '.jpg'],
-                  rules:{
-                      from:'../images',
-                      to:'../images/webp'
+                  webpClass:'.webp',
+                  noWebpClass:"",
+                  imgRules:{
+                      replace_from:/\.(png|jpg|jpeg)/,
+                      replace_to:".webp"
+                  },
+                  urlRules:{
+                      replace_from:'../images',
+                      replace_to:'../images/webp'
+                  },
+                  cssStyles:{
+                      compatibility:true,
+                      keepBreaks:true,
+                      advanced:false
                   }
               },
               files: {
